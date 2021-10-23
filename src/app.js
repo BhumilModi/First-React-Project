@@ -1,25 +1,20 @@
-/* global React ReactDOM */
+import React from "react";
+import ReactDOM from "react-dom";
+import Pet from "./pet"
 
-const Pet = (props) => {
-  return React.createElement("div", {}, [
-    React.createElement("h2", {}, props.name),
-    React.createElement("h3", {}, props.animal),
-    React.createElement("h3", {}, props.breed),
-  ]);
-};
 
 const App = () => {
   return React.createElement("div", {}, [
     React.createElement("hi", {}, "Adopt-Me!!"),
     React.createElement(Pet, { 
-        name: "Rocky", 
+        name: "Doggy", 
         animal: "dog", 
         breed: "husky" 
     }),
     React.createElement(Pet, {
       name: "Billu",
-      animal: "Bird",
-      breed: "Parrot",
+      animal: "Cat",
+      breed: null,
     }),
     React.createElement(Pet, {
       name: "Mau",
