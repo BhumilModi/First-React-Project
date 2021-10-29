@@ -35,7 +35,7 @@ class Details extends Component {
         const {animal , breed , city , state , description ,name , images , showModal} = this.state;
 
         return (
-            <div className="details">
+            <div className="p-1 m-2 justify-items-center">
                 <Carousel images={images} />
                 <div>
                     <h1>{name}</h1>
@@ -55,7 +55,7 @@ class Details extends Component {
                                     <h1>
                                         Would you like to adopt {name} ?
                                     </h1>
-                                    <div className="buttons">
+                                    <div className="rounded px-6 py-2 text-white hover:opacity-50 border-none">
                                         <button onClick = {this.adopt}>Yes</button>
                                         <button onClick = {this.toggleModal}>No</button>
                                     </div>    
