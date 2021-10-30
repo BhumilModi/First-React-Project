@@ -1,41 +1,44 @@
 import ReactDOM from "react-dom";
-import { StrictMode , useState} from "react";
-import { BrowserRouter as Router , Link, Route , Switch } from "react-router-dom";
-import SearchParams from "./SearchParams";
-import Details from "./Details";
+import { StrictMode, useState, lazy, Suspense } from "react";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+
 import ThemeContext from "./ThemeContext";
 
+const Details = lazy(() => import("./Details"));
+const SearchParams = lazy(() => import("./SearchParams"));
 
 const App = () => {
-const theme = useState("darkblue");
+  const theme = useState("darkblue");
 
-  return(
+  return (
     <ThemeContext.Provider value={theme}>
-      <div className="p-1 m-0 "
+      <div
         style={{
           background: "url(http://pets-images.dev-apis.com/pets/wallpaperA.jpg)",
         }}
       >
-        <Router>
-          <header 
-            className = "w-full mb-10 text-center p-7 bg-gradient-to-b from-purple-400 via-pink-500 to-red-500"
-          >
-            <Link 
-              to="/"
-              className = "text-6xl text-white hover:text-gray-300"
+        <Suspense fallback={<h2>loading....</h2>}>
+          <Router>
+            <header
+              className="w-full mb-10 text-center p-7 bg-gradient-to-b from-purple-400 via-pink-500 to-red-500"
             >
-              <h1>Adopt Me!</h1>
-            </Link>
-          </header>
-          <Switch>
-            <Route path="/details/:id">
-              <Details/>
-            </Route>
-            <Route path="/">
-              <SearchParams />
-            </Route>
-          </Switch>
-        </Router>
+              <Link
+                to="/"
+                className="text-6xl text-white hover:text-gray-300"
+              >
+                <h1>Adopt Me!</h1>
+              </Link>
+            </header>
+            <Switch>
+              <Route path="/details/:id">
+                <Details />
+              </Route>
+              <Route path="/">
+                <SearchParams />
+              </Route>
+            </Switch>
+          </Router>
+        </Suspense>
       </div>
     </ThemeContext.Provider>
   );
@@ -44,6 +47,6 @@ const theme = useState("darkblue");
 ReactDOM.render(
   <StrictMode>
     <App />
-  </StrictMode>, 
+  </StrictMode>,
   document.getElementById("root")
 );

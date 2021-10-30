@@ -1,8 +1,9 @@
-import { Component } from "react";
+import { Component, lazy } from "react";
 import { withRouter } from "react-router";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
+
 import Modal from "./Modal";
 
 class Details extends Component {
@@ -25,8 +26,7 @@ class Details extends Component {
 
     toggleModal = () => this.setState({ showModal: !this.state.showModal });
 
-    adopt = () => (window.location = "http://bit.ly/pet-adopt")
-
+    adopt = () => (window.location = "http://bit.ly/pet-adopt");
     render() {
         if (this.state.loading) {
             return <h2>Loading...</h2>
@@ -50,21 +50,19 @@ class Details extends Component {
                         )}
                     </ThemeContext.Consumer>
                     <p className="p-10 lg:my-50 text-lg">{description}</p>
-                    {
-                        showModal ? (
-                            <Modal>
-                                <div>
-                                    <h1>
-                                        Would you like to adopt {name} ?
-                                    </h1>
-                                    <div className="rounded px-6 py-2 text-white hover:opacity-50 border-none">
-                                        <button onClick={this.adopt}>Yes</button>
-                                        <button onClick={this.toggleModal}>No</button>
-                                    </div>
+                    {showModal ? (
+                        <Modal>
+                            <div>
+                                <h1>Would you like to adopt {name}?</h1>
+                                <div className="p-5">
+                                    <button className="rounded-xl px-6 py-2 m-5 text-white hover:opacity-50 border-none"
+                                        style={{ backgroundColor: "red" }} onClick={this.adopt}>Yes</button>
+                                    <button className="rounded-xl px-6 m-5 py-2 text-white hover:opacity-50 border-none"
+                                        style={{ backgroundColor: "red" }} onClick={this.toggleModal}>No</button>
                                 </div>
-                            </Modal>
-                        ) : null
-                    }
+                            </div>
+                        </Modal>
+                    ) : null}
                 </div>
             </div>
         );
