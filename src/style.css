@@ -19,4 +19,32 @@
     width: 300px;
     border-radius: 5px;
   }
+  .profile-pic {
+    display: inline;
+    margin: 0;
+    margin-left: -25%;
+    height: 100%;
+    width: auto;
+  }
+  .main-pic {
+    display: inline;
+    margin: 0;
+    margin: left 0;
+    height: 100%;
+    width: auto;
+  }
+  .image-cropper {
+    width: 140px;
+    height: 140px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20%;
+  }
+  .prof-cropper {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+  }
 }

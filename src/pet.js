@@ -9,13 +9,13 @@ const Pet = ({
   id
 }) => {
   let hero = `http://pets-images.dev-apis.com/pets/none.jpg`;
-  if(images.length){
+  if (images.length) {
     hero = images[0];
   }
   return (
     <Link to={`/details/${id}`} className="relative block" >
       <div>
-        <img src={hero} alt={name}/>
+        <img src={hero} alt={name} />
       </div>
       <div className="absolute bottom-0 left-0 bg-gradient-to-tr from-black to-transparent pr-2 pt-2 text-blue-300">
         <h1>{name}</h1>
