@@ -1,17 +1,17 @@
 import ReactDOM from "react-dom";
-import { StrictMode, useState } from "react";
+import { StrictMode } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import DetailsWithErrorBoundary from "./Details";
-import ThemeContext from "./ThemeContext";
 import SearchParams from "./SearchParams";
+import { Provider } from "react-redux";
+import store from "./store";
 
 
 const App = () => {
-  const theme = useState("darkblue");
 
   return (
     <StrictMode>
-      <ThemeContext.Provider value={theme}>
+      <Provider store={store}>
         <div
           style={{
             background: "url(http://pets-images.dev-apis.com/pets/wallpaperA.jpg)",
@@ -36,7 +36,7 @@ const App = () => {
             </Route>
           </Switch>
         </div>
-      </ThemeContext.Provider>
+      </Provider>
     </StrictMode>
   );
 };
